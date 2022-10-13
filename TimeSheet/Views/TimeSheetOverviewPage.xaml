@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeSheet.Views.TimeSheetOverviewPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:TimeSheet.ViewModels"
+             xmlns:model="clr-namespace:TimeSheet.Models">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Command="{Binding AddTimeSheetCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <RefreshView x:DataType="local:TimeSheetOverviewViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="TimeSheetsListView"
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="5" Margin="0, 0, 0, 0">
+                        <Frame CornerRadius="10" HasShadow="True" Padding="10">
+                            <StackLayout Padding="5" x:DataType="model:UserTimeSheet">
+                                <Label Text="{Binding WeekEndingDateString, StringFormat='Week Ending {0:S}'}"
+                               LineBreakMode="NoWrap"
+                               Style="{DynamicResource ListItemTextStyle}"
+                               FontSize="16"/>
+                                <StackLayout Padding="5" x:DataType="model:UserTimeSheet" Orientation="Vertical">
+                                    <Label Text="{Binding AllStandardHours, StringFormat='Standard Hours: {0:N}'}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13"/>
+                                    <Label Text="{Binding AllOvertimeHours, StringFormat='Overtime Hours: {0:N}'}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13"/>
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:TimeSheetOverviewViewModel}}, Path=ItemTapped}"
+                                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

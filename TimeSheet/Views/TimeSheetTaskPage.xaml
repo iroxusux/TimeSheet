@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeSheet.Views.TimeSheetTaskPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:TimeSheet.ViewModels"
+             xmlns:model="clr-namespace:TimeSheet.Models">
+
+    <ContentPage.BindingContext>
+        <local:TimeSheetTaskViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="10">
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Job Number"/>
+                        <Entry x:Name="JobNumber" Placeholder="ICxx-xxx" Text="{Binding JobNumber, Mode=TwoWay}"/>
+                        <Label Text="Sub Code"/>
+                        <Picker x:Name="SubCodePicker" Title="SubCode" ItemsSource="{Binding SubCodeStrings}" SelectedItem="{Binding SelectedSubCode, Mode=TwoWay }"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Is Night Shift"/>
+                            <Switch IsToggled="{Binding IsNightShift, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Out Of Town"/>
+                            <Switch IsToggled="{Binding IsOutOfTown, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Monday" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding MondayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding MondayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Tuesday Hours" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding TuesdayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding TuesdayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Wednesday Hours" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding WednesdayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding WednesdayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Thursday Hours" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding ThursdayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding ThursdayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Friday Hours" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding FridayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding FridayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Saturday Hours" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding SaturdayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"                                                                                                             
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding SaturdayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Sunday Hours" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Standard" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding SundayST, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Overtime" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                            <Entry FontSize="Medium" Placeholder="0" Keyboard="Numeric"
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Focused="OnHoursEntrySelected"
+                        MaxLength="2"
+                        WidthRequest="40" Text="{Binding SundayOT, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

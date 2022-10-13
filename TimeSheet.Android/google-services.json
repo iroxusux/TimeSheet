@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "308454424094",
+    "project_id": "timesheet-6f68d",
+    "storage_bucket": "timesheet-6f68d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308454424094:android:cc84289f87ac7640bbb80f",
+        "android_client_info": {
+          "package_name": "com.irox.TimeSheet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308454424094-oapo3cskps9tbjgnggrst8d3c9c8p08h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATEg3PkocBuOs--ECTzkPv0eVA-EQhQNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308454424094-oapo3cskps9tbjgnggrst8d3c9c8p08h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

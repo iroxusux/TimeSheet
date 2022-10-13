@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeSheet.Views.TimeSheetPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:TimeSheet.ViewModels"
+             xmlns:model="clr-namespace:TimeSheet.Models">
+
+    <ContentPage.BindingContext>
+        <local:TimeSheetViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteTimeSheetCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="5" Padding="10">
+        <Label Text="Week Ending" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+        <DatePicker x:Name="WeekEndingDatePicker"
+                        Format="D"
+                        Margin="0,0,0,0"
+                        HorizontalOptions="Center"
+                        MinimumDate="01/01/2020"
+                        MaximumDate="12/31/2100"
+                        Date="{Binding WeekEndingDate, Mode=TwoWay}"/>
+        <Label Text="{Binding TimeSheet.Id, StringFormat='Id: {0:S}'}" FontSize="Small" HorizontalOptions="CenterAndExpand"/>
+        <CollectionView x:Name="TasksListView"
+                        ItemsSource="{Binding TimeSheet.Tasks}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="5">
+                        <Frame CornerRadius="10" HasShadow="True">
+                            <StackLayout Padding="0" x:DataType="model:TimeSheetTask">
+                                <Label Text="{Binding TaskName}"/>
+                                <Label Text="{Binding JobNumber, StringFormat='Job Number: {0:S}'}"/>
+                                <Label Text="{Binding Subcode, StringFormat='Sub Code: {0:S}'}"/>
+                                <Label Text="{Binding AllStandardHours, StringFormat='Standard Hours: {0:N}'}"/>
+                                <Label Text="{Binding AllOvertimeHours, StringFormat='Overtime Hours: {0:N}'}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:TimeSheetViewModel}}, Path=ItemTapped}"
+                                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Submit" Command="{Binding SubmitCommand}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

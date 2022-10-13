@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeSheet.Views.NewTimeSheetPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="New Time Sheet"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             xmlns:vm="clr-namespace:TimeSheet.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:NewTimeSheetViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Frame CornerRadius="10" HasShadow="True">
+                <StackLayout Spacing="3" Padding="15">
+                    <Label Text="Tap To Select Date From Calendar" FontSize="Small" HorizontalOptions="CenterAndExpand"/>
+                    <DatePicker x:Name="WeekEndingDatePicker"
+                        Format="D"
+                        Margin="0,0,0,0"
+                        MinimumDate="01/01/2020"
+                        MaximumDate="12/31/2100"
+                        HorizontalOptions="CenterAndExpand"
+                        Date="{Binding WeekEndingDate}"
+                        DateSelected="OnDateSelected"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
+                        <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
